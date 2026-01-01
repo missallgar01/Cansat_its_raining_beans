@@ -1,0 +1,33 @@
+<!doctype html>
+  <head>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <title>Chart</title>
+  </head>
+
+  <body>
+    <img src="{{ url_for('static', filename='images/logo.gif') }}" />
+
+    <div class="topnav">
+        <a class="nav-link active" href="{{ url_for('index')}}">Home</a>
+        <a class="nav-link active" href="{{ url_for('live')}}">Live</a>
+        <a class="nav-link active" href="{{ url_for('analysis')}}">Analysis</a>
+    </div>
+
+    <div class="content">
+       <h1> Show Temperature Vs Altitude</h1>
+       <img src="{{ url_for('static', filename='images/tempchart.png') }}" width='50%'/>
+
+            
+    </div>
+
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+
+  </body>
+</html>
+
+
+ 

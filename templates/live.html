@@ -1,0 +1,82 @@
+<!doctype html>
+    <head>
+    <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <title>Live</title>
+        
+    </head>
+<body>
+    <img src="{{ url_for('static', filename='images/logo.gif') }}"/>
+
+    <div class="topnav">
+        <a class="nav-link active" href="{{ url_for('index')}}">Home</a>
+        <a class="nav-link active" href="{{ url_for('live')}}">Live</a>
+        <a class="nav-link active" href="{{ url_for('analysis')}}">Analysis</a>
+    </div>
+
+    <div class="content">
+      <h1> Live Recording</h1>
+
+  <hr>
+
+        <form method ="post">
+            <button type="submit" name="btn" value="start">Start</button>
+            <button type="submit" name="btn" value="stop">Stop</button>
+            <button type="submit" name="btn" value="pumpon">Pump on</button>
+            <button type="submit" name="btn" value="pumpoff">Pump off</button>
+  </form>
+
+    <button type="button" id="stopBtn">Stop displaying data</button>
+  <script>
+     function update(){
+            //Fetch is a command to make a HTTP request
+            fetch("/update").then(function(response){
+                return response.json();
+                
+            }).then (function(data){
+                    console.log(data);
+                    document.getElementById("temp").innerText = data['temp'];
+                    document.getElementById("pressure").innerText = data['pressure'];
+                    document.getElementById("altitude").innerText = data['altitude'];
+                    document.getElementById("pump").innerText = data['pumpstatus'];
+                }).catch(function(err){
+                    console.log(err.message);
+                });
+        }
+
+     intervalID = setInterval(update, 1000);
+
+
+    // Function to stop setInterval call
+    function stop(){
+        clearInterval(intervalID);
+    }
+
+
+    document.getElementById("stopBtn").addEventListener("click", stop);
+    </script>
+   
+
+
+        <hr>
+    <table>
+    <tr>
+    <th> Temperature</th>
+    <th> Pressure</th>
+    <th> Altitude </th>
+    <th> Pump Status </th>
+    </tr>
+    <tr>
+    <td id="temp" ></td>
+    <td id="pressure"></td>
+    <td id="altitude" ></td>
+    <td id="pump" ></td>
+    </tr>
+    </table>
+ </div>
+    <div class="footer">
+
+    </div>
+</body>
+</html>
+ 

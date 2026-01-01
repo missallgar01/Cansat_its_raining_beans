@@ -1,0 +1,27 @@
+<!doctype html>
+    <head>
+    <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <title>home</title>
+    </head>
+<body>
+    <img src="{{ url_for('static', filename='images/logo.gif') }}"/>
+
+    <div class="topnav">
+        <a class="nav-link active" href="{{ url_for('index')}}">Home</a>
+        <a class="nav-link active" href="{{ url_for('live')}}">Live</a>
+        <a class="nav-link active" href="{{ url_for('analysis')}}">Analysis</a>
+    </div>
+    <div class="content">
+       <h1> Welcome to CanSat Groundstation</h1>
+       <a href="{{ url_for('live')}}">Live</a>
+       <br>
+       <a href="{{ url_for('analysis')}}">Analysis</a>
+    </div>
+
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+</body>
+</html>
+ 
